@@ -28,6 +28,7 @@
 #include "tim_delay.h"
 #include "stdbool.h"
 #include "ds18b20.h"
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,6 +48,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+
+char temp_info[4];
+char info[] = "\nCurrent temperature [C]: ";
 
 /* USER CODE END PV */
 
@@ -100,7 +104,9 @@ int main(void)
   while (1)
   {
 	  float temp = current_temp_1_sensor(TEMP_SENSOR_GPIO_Port, TEMP_SENSOR_Pin, &htim16);
-
+	  HAL_UART_Transmit(&huart2, info, 26, 1000);
+	  sprintf(temp_info, "%.1f", temp);
+	  HAL_UART_Transmit(&huart2, temp_info, 4, 1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
