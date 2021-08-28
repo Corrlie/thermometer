@@ -1,0 +1,3 @@
+ds18b20.c:12:6:set_pin_as_input	40	static
+ds18b20.c:20:6:set_pin_as_output	40	static
+ds18b20.c:29:6:is_ds_present	32	static

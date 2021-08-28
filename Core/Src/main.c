@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "tim_delay.h"
+#include "stdbool.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,9 +98,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-//	  HAL_Delay(20);
-	  custom_delay_us(&htim16, 20000);
+//	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+////	  HAL_Delay(20);
+//	  custom_delay_us(&htim16, 20000);
+
+	  bool present = is_ds_present(TEMP_SENSOR_GPIO_Port, TEMP_SENSOR_Pin, &htim16);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
